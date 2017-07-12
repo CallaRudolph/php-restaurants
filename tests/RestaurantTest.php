@@ -287,7 +287,7 @@
             $price_range_2 = 1;
             $description_2 = "Buffet meat";
             $test_restaurant_2 = new Restaurant($name_2, $price_range_2, $description_2, $cuisine_id);
-            $test_restaurant->save();
+            $test_restaurant_2->save();
 
             //Act
             Restaurant::deleteAll();

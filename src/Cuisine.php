@@ -59,5 +59,25 @@
             }
         }
 
+        static function find($search_id)
+        {
+            $found_cuisine = null;
+            $returned_cuisines = $GLOBALS['DB']->prepare("SELECT * FROM cuisines WHERE id = :id");
+            $returned_cuisines->bindParam(':id', $search_id, PDO::PARAM_STR);
+            $returned_cuisines->execute();
+            foreach($returned_cuisines as $cuisine) {
+                $type = $cuisine['type'];
+                $id = $cuisine['id'];
+                if ($id == $search_id) {
+                    $found_cuisine = new Cuisine($type, $id);
+                }
+            }
+            return $found_cuisine;
+        }
+
+        // function getRestaurants()
+        // {
+        //
+        // }
     }
 ?>

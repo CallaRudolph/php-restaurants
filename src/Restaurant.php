@@ -104,5 +104,23 @@
             }
         }
 
+        static function find($search_id)
+        {
+            $found_restaurant = null;
+            $returned_restaurants = $GLOBALS['DB']->prepare("SELECT * FROM restaurants WHERE id = :id");
+            $returned_restaurants->bindParam(':id', $search_id, PDO::PARAM_STR);
+            $returned_restaurants->execute();
+            foreach($returned_restaurants as $restaurant) {
+                $name = $restaurant['name'];
+                $price_range = $restaurant['price_range'];
+                $description = $restaurant['description'];
+                $cuisine_id = $restaurant['cuisine_id'];
+                $id = $restaurant['id'];
+                if ($id == $search_id) {
+                    $found_restaurant = new Restaurant($name, $price_range, $description, $cuisine_id, $id);
+                }
+            }
+            return $found_restaurant;
+        }
     }
 ?>
