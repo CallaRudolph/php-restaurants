@@ -23,5 +23,13 @@
         return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
     });
 
+    $app->post('/', function() use ($app) {
+        $type = $_POST['type'];
+        $cuisine = new Cuisine($type);
+        $cuisine->save();
+
+        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
+    });
+
     return $app;
 ?>

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <title>Kelp!</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Kelp!</h1>
+                <h2>For what kind of food are you in the mood?</h2>
+            </div>
+
+            <form action="/" method="post">
+                <input type="text" name="type" placeholder="Enter Type of Cuisine" id="type">
+                <button type="submit" class="btn">Submit</button>
+            </form>
+
+            {% if cuisines is not empty %}
+                <h2>Pick a mood in which to eat food!</h2>
+                <ul class='list-unstyled'>
+                    {% for cuisine in cuisines %}
+                        <li><a href='/cuisines/{{ cuisine.getType }}'>{{ cuisine.getType }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h2>There are no food-moods to choose from yet!</h2>
+            {% endif %}
+        </div>
+    </body>
+</html>
