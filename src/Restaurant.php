@@ -16,7 +16,6 @@
             $this->id = $id;
         }
 
-
         function setId()
         {
             $this->id = intval($id);

@@ -147,6 +147,11 @@
             $test_cuisine->save();
             $cuisine_id = $test_cuisine->getId();
 
+            $type_2 = 'Ethiopian';
+            $test_cuisine_2 = new Cuisine($type_2);
+            $test_cuisine_2->save();
+            $cuisine_id_2 = $test_cuisine_2->getId();
+
             $name = "EatMe";
             $price_range = 2;
             $description = "Family-Friendly dining with meat";
@@ -158,6 +163,12 @@
             $description_2 = "Buffet meat";
             $test_restaurant_2 = new Restaurant($name_2, $price_range_2, $description_2, $cuisine_id);
             $test_restaurant_2->save();
+
+            $name_3 = "Starve2Death";
+            $price_range_3 = 1;
+            $description_3 = "Come hang out here if you never want to eat ever again.";
+            $test_restaurant_3 = new Restaurant($name_3, $price_range_3, $description_3, $cuisine_id_2);
+            $test_restaurant_3->save();
 
             //Act
             $result = $test_cuisine->getRestaurants();
