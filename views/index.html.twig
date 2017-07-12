@@ -19,7 +19,7 @@
                 <h2>Pick a mood in which to eat food!</h2>
                 <ul class='list-unstyled'>
                     {% for cuisine in cuisines %}
-                        <li><a href='/cuisines/{{ cuisine.getType }}'>{{ cuisine.getType }}</a></li>
+                        <li><a href='/cuisines/{{ cuisine.getId }}'>{{ cuisine.getType }}</a></li>
                     {% endfor %}
                 </ul>
             {% else %}
