@@ -260,7 +260,7 @@
             $price_range_2 = 1;
             $description_2 = "Buffet meat";
             $test_restaurant_2 = new Restaurant($name_2, $price_range_2, $description_2, $cuisine_id);
-            $test_restaurant->save();
+            $test_restaurant_2->save();
 
             //Act
             $result = Restaurant::getAll();
@@ -268,6 +268,35 @@
             //Assert
             $this->assertEquals([$test_restaurant, $test_restaurant_2], $result);
         }
+
+        function testDeleteAll()
+        {
+            //Arrange
+            $type = 'American';
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+            $cuisine_id = $test_cuisine->getId();
+
+            $name = "EatMe";
+            $price_range = 2;
+            $description = "Family-Friendly dining with meat";
+            $test_restaurant = new Restaurant($name, $price_range, $description, $cuisine_id);
+            $test_restaurant->save();
+
+            $name_2 = "EatEverything";
+            $price_range_2 = 1;
+            $description_2 = "Buffet meat";
+            $test_restaurant_2 = new Restaurant($name_2, $price_range_2, $description_2, $cuisine_id);
+            $test_restaurant->save();
+
+            //Act
+            Restaurant::deleteAll();
+            $result = Restaurant::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
+
     }
 
 ?>

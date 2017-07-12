@@ -81,6 +81,7 @@
             $type = 'American';
             $test_cuisine = new Cuisine($type);
             $test_cuisine->save();
+
             $type_2 = 'Mexican';
             $test_cuisine_2 = new Cuisine($type_2);
             $test_cuisine_2->save();
@@ -90,6 +91,25 @@
 
             //Assert
             $this->assertEquals([$test_cuisine, $test_cuisine_2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            //Arrange
+            $type = 'American';
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+
+            $type_2 = 'Mexican';
+            $test_cuisine_2 = new Cuisine($type_2);
+            $test_cuisine_2->save();
+
+            //Act
+            Cuisine::deleteAll();
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
         }
     }
 ?>

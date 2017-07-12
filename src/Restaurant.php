@@ -16,16 +16,6 @@
             $this->id = $id;
         }
 
-        function save()
-        {
-            $executed = $GLOBALS['DB']->exec("INSERT INTO restaurants (name, price_range, description, cuisine_id) VALUES ('{$this->getName()}', {$this->getPriceRange()}, '{$this->getDescription()}', {$this->getCuisineId()})");
-            if ($executed) {
-                $this->id = $GLOBALS['DB']->lastInsertId();
-                return true;
-            } else {
-                return false;
-            }
-        }
 
         function setId()
         {
@@ -76,5 +66,43 @@
         {
             return $this->cuisine_id;
         }
+
+        function save()
+        {
+            $executed = $GLOBALS['DB']->exec("INSERT INTO restaurants (name, price_range, description, cuisine_id) VALUES ('{$this->getName()}', {$this->getPriceRange()}, '{$this->getDescription()}', {$this->getCuisineId()})");
+            if ($executed) {
+                $this->id = $GLOBALS['DB']->lastInsertId();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        static function getAll()
+        {
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants;");
+            $restaurants = array();
+            foreach($returned_restaurants as $restaurant) {
+                $name = $restaurant['name'];
+                $price_range = $restaurant['price_range'];
+                $description = $restaurant['description'];
+                $cuisine_id = $restaurant['cuisine_id'];
+                $id = $restaurant['id'];
+                $new_restaurant = new Restaurant($name, $price_range, $description, $cuisine_id, $id);
+                array_push($restaurants, $new_restaurant);
+            }
+            return $restaurants;
+        }
+
+        static function deleteAll()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM restaurants;");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
     }
 ?>
