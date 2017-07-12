@@ -14,6 +14,11 @@
 
     class CuisineTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Cuisine::deleteAll();
+            Restaurant::deleteAll();
+        }
 
         function testGetType()
         {
@@ -68,6 +73,23 @@
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
+        }
+
+        function testGetAll()
+        {
+            //Arrange
+            $type = 'American';
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+            $type_2 = 'Mexican';
+            $test_cuisine_2 = new Cuisine($type_2);
+            $test_cuisine_2->save();
+
+            //Act
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals([$test_cuisine, $test_cuisine_2], $result);
         }
     }
 ?>
