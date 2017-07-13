@@ -23,7 +23,7 @@
                     <li>
                         <form action="/cuisines/{id}/delete_restaurant">
                             <input type="hidden" name="cuisine_id" value="{{ cuisine.getId }}">
-                            <button type="text" name="button">Delete All {{ cuisine.getType }} Restaurants</button></li>
+                            <button type="text" class="btn btn-danger">Delete All {{ cuisine.getType }} Restaurants</button></li>
                         </form>
                     </li>
                 </ul>
@@ -43,7 +43,9 @@
             </form>
 
             <a href="/">Home</a> <br>
-            <a href="/all_restaurants_deleted">Delete All Restaurants</a>
+            <a href="/all_restaurants_deleted">Delete All Restaurants</a> <br>
+            <a href="/all_cuisines_deleted">Delete All Food-Moods</a>
+
         </div>
     </body>
 </html>

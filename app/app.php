@@ -36,6 +36,12 @@
         return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
     });
 
+    $app->get('/all_cuisines_deleted', function() use ($app) {
+        Cuisine::deleteAll();
+
+        return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
+    });
+
 
     $app->get('/cuisines/{id}', function($id) use ($app) {
         $cuisine = Cuisine::find($id);
