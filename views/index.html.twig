@@ -22,11 +22,17 @@
                         <li><a href='/cuisines/{{ cuisine.getId }}'>{{ cuisine.getType }}</a></li>
                     {% endfor %}
                 </ul>
-                <a href="/all_cuisines_deleted">Delete All Food-Moods</a>
+                <div class="well">
+                    <form action="/all_cuisines_deleted" method="post">
+                        <button type="submit" class="btn btn-danger">Delete All Cuisines</button>
+                    </form>
+                    <form action="/all_restaurants_deleted" method="post">
+                        <button type="submit" class="btn btn-danger">Delete All Restaurants</button>
+                    </form>
+                </div>
             {% else %}
                 <h2>There are no food-moods from which to choose just yet, m'friend!</h2>
             {% endif %}
-
         </div>
     </body>
 </html>
