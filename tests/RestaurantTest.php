@@ -212,7 +212,6 @@
             $price_range = 2;
             $description = "Family-Friendly dining with meat";
             $test_restaurant = new Restaurant($name, $price_range, $description, $cuisine_id);
-            $test_restaurant->save();
 
             //Act
             $executed = $test_restaurant->save();
