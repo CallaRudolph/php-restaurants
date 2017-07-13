@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <title>Kelp!</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Kelp!</h1>
+            </div>
+
+            <h2>You have successfully added the following restaurant:</h2>
+            <p>
+                {{ new_restaurant.getName }} <br>
+                Food-Mood: {{ cuisine.getType }} <br>
+                Price-Range: {{ new_restaurant.getPriceRange }} <br>
+                Description: {{ new_restaurant.getDescription }}
+            </p>
+
+            <a href="/cuisines/{{ cuisine.getId }}">Go back to {{ cuisine.getType }}-style restaurants</a>
+        </div>
+    </body>
+</html>

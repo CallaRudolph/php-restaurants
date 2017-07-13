@@ -175,6 +175,8 @@
 
             //Assert
             $this->assertEquals([$test_restaurant, $test_restaurant_2], $result);
+
+            var_dump($result);
         }
     }
 ?>
