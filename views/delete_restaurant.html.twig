@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <title>Kelp!</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Kelp!</h1>
+            </div>
+
+            <h2>Are you sure you want to delete all the restaurants?</h2>
+
+            <form action="/restaurants_deleted">
+                <input type="hidden" name="cuisine_id" value="{{ cuisine.getId }}">
+                <button type="submit" class="btn">Delete Restaurants</button>
+            </form>
+
+        </div>
+    </body>
+</html>

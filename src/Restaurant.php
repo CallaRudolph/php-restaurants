@@ -103,6 +103,16 @@
             }
         }
 
+        // function delete()
+        // {
+        //     $executed = $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$this->getId()};");
+        //     if (!$executed) {
+        //         return false;
+        //     } else {
+        //         return true;
+        //     }
+        // }
+
         static function find($search_id)
         {
             $found_restaurant = null;

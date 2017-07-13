@@ -13,14 +13,24 @@
                 <h3>Here are the restaurants that serve food of this mood: {{ cuisine.getType }}</h3>
                 <ul class='list-unstyled'>
                     {% for restaurant in restaurants %}
-                        <li>{{ restaurant.getName }}</li>
+                            <form action="/delete_restaurant">
+                                <input type="hidden" name="restaurant_id" value="{{ restaurant.getId }}">
+                                <li>{{ restaurant.getName }}
+                            </form>
+                        </li>
                     {% endfor %}
+                    <li>
+                        <form action="/delete_restaurant">
+                            <input type="hidden" name="cuisine_id" value="{{ cuisine.getId }}">
+                            <!-- <button type="text" name="button">Delete All {{ cuisine.getType }} Restaurants</button></li> -->
+                        </form>
+                    </li>
                 </ul>
             {% else %}
                 <h2>Ain't no {{ cuisine.getType }}-type restaurants just yet.</h2>
             {% endif %}
 
-            <form name="add_restaurant_form" action="/restaurants" method="post">
+            <form action="/restaurants" method="post">
                 <h4>Add a new {{ cuisine.getType }} Restaurant</h4>
 
                 <input id="cuisine_id" name="cuisine_id" type="hidden" value="{{ cuisine.getId() }}">
@@ -28,8 +38,11 @@
                 <input type="number" name="price_range" id="price_range" placeholder="Price Range (1 - 3)">
                 <input type="text" name="description" placeholder="Description" id="description">
 
-                <button name="add_restaurant_form" type="submit" class="btn">Submit</button>
+                <button type="submit" class="btn">Submit</button>
             </form>
+
+            <a href="/">Home</a> <br>
+            <a href="/all_restaurants_deleted">Delete All Restaurants</a>
         </div>
     </body>
 </html>
