@@ -23,9 +23,22 @@
     });
 
     $app->post('/', function() use ($app) {
-        $type = $_POST['type'];
+        $type_input = $_POST['type'];
+
+        $exploded_type_upper_arr = array();
+        $exploded_type = explode(" ", $type_input);
+        foreach ($exploded_type as $item) {
+            $item = ucfirst($item);
+            array_push($exploded_type_upper_arr, $item);
+        }
+
+        $type = implode(" ", $exploded_type_upper_arr);
+
+        var_dump($type);
         $cuisine = new Cuisine($type);
         $cuisine->save();
+
+        // var_dump($cuisine);
 
         return $app['twig']->render('index.html.twig', array('cuisines' => Cuisine::getAll()));
     });
