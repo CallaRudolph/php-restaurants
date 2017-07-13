@@ -200,6 +200,35 @@
             $this->assertEquals($new_cuisine_id, $result);
         }
 
+        // function delete()
+        // {
+        //     //Arrange
+        //     $type = 'American';
+        //     $test_cuisine = new Cuisine($type);
+        //     $test_cuisine->save();
+        //     $cuisine_id = $test_cuisine->getId();
+        //
+        //     $name = 'EatMe';
+        //     $price_range = 1;
+        //     $description = 'Family-Friendly dining with meat';
+        //     $test_restaurant = new Restaurant($name, $price_range, $description, $cuisine_id);
+        //     $test_restaurant->save();
+        //
+        //     $name = 'BiteMe';
+        //     $price_range = 3;
+        //     $description = 'Not-So-Family-Friendly dining with veggies';
+        //     $test_restaurant = new Restaurant($name, $price_range, $description, $cuisine_id);
+        //     $test_restaurant->save();
+        //
+        //
+        //     //Act
+        //     $test_restaurant->delete($new_cuisine_id);
+        //     $result = $test_restaurant->getCuisineId();
+        //
+        //     //Assert
+        //     $this->assertEquals($new_cuisine_id, $result);
+        // }
+
         function testSave()
         {
             //Arrange

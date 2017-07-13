@@ -15,14 +15,15 @@
                     {% for restaurant in restaurants %}
                             <form action="/delete_restaurant">
                                 <input type="hidden" name="restaurant_id" value="{{ restaurant.getId }}">
-                                <li>{{ restaurant.getName }}
+                                <li>
+                                    {{ restaurant.getName }} | {{ restaurant.getDescription }}
+                                </li>
                             </form>
-                        </li>
                     {% endfor %}
                     <li>
-                        <form action="/delete_restaurant">
+                        <form action="/cuisines/{id}/delete_restaurant">
                             <input type="hidden" name="cuisine_id" value="{{ cuisine.getId }}">
-                            <!-- <button type="text" name="button">Delete All {{ cuisine.getType }} Restaurants</button></li> -->
+                            <button type="text" name="button">Delete All {{ cuisine.getType }} Restaurants</button></li>
                         </form>
                     </li>
                 </ul>

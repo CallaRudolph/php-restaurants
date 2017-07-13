@@ -62,19 +62,21 @@
         $cuisine_id = $_GET['cuisine_id'];
         $cuisine = Cuisine::find($cuisine_id);
 
-        return $app['twig']->render('delete_restaurant.html.twig', array('cuisine' => $cuisine));
+        $cuisine->deleteRestaurants();
+
+        return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine));
     });
 
-    $app->get('/restaurants_deleted', function() use ($app) {
-        $cuisine_id = $_GET['cuisine_id'];
-        $restaurants = Restaurant::find($cuisine_id);
-
-        foreach ($restaurants as $restaurant) {
-            $restaurant->delete();
-        }
-
-        return $app['twig']->render('cuisine.html.twig');
-    });
+    // $app->get('/restaurants_deleted', function() use ($app) {
+    //     $cuisine_id = $_GET['cuisine_id'];
+    //     $restaurants = Restaurant::find($cuisine_id);
+    //
+    //     foreach ($restaurants as $restaurant) {
+    //         $restaurant->delete();
+    //     }
+    //
+    //     return $app['twig']->render('cuisine.html.twig');
+    // });
 
     return $app;
 ?>

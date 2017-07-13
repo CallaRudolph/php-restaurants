@@ -90,5 +90,15 @@
             }
             return $restaurants;
         }
+
+        function deleteRestaurants()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE * FROM restaurants WHERE cuisine_id = {$this->getId()}");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 ?>
